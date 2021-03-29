@@ -1,2 +1,14 @@
-# Database
-db.sqlite3
+# Stuff
+.idea/
+
+# Migrations
+blog/migrations/
+
+# Credentials
+docker-compose/.env
+
+# Static Files
+files/
+
+# cache
+blog/__pycache__/
