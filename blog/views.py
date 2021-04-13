@@ -12,7 +12,7 @@ class Index(TemplateView):
                 'title':article.title,
                 'cover':article.cover,
                 'category':article.category,
-                'created_at':article.created_at
+                'created_at':article.created_at.date()
             })
 
         context = {
