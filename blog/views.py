@@ -5,12 +5,12 @@ from .models import *
 class Index(TemplateView):
     def get(self, request, **kwargs):
         article_data = []
-        all_articles = Article.objects.all()[:9]
+        all_articles = Article.objects.all().order_by('-created_at')[:9]
 
         for article in all_articles:
             article_data.append({
                 'title':article.title,
-                'cover':article.cover,
+                'cover':article.cover.url,
                 'category':article.category,
                 'created_at':article.created_at.date()
             })
