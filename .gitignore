@@ -9,3 +9,7 @@ docker-compose/.env
 
 # Static Files
 files/
+staticfiles/
+
+# Raw Template
+template_raw/
