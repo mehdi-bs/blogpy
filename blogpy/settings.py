@@ -137,3 +137,4 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 # Media
 MEDIA_URL = 'files/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'')
+

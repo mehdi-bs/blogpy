@@ -30,8 +30,11 @@ class Index(TemplateView):
 
         context = {
             'article_data':article_data,
-            'promote_data':promote_data
+            'promote_data':promote_data,
         }
 
         return render(request,'index.html',context)
 
+
+class ContactPage(TemplateView):
+    template_name = 'contact.html'
