@@ -13,3 +13,6 @@ staticfiles/
 
 # Raw Template
 template_raw/
+
+# cache
+*.pyc
