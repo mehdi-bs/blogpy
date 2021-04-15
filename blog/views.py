@@ -79,3 +79,17 @@ class SelectArticleAPIView(APIView):
         except:
             return Response({'error': "Retriving Selected Articles Failed!"}, status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+class SearchArticle(APIView):
+
+    def get(self,request):
+        try:
+            from django.db.models import Q
+            query = request.GET['query']
+            articles = Article.objects.filter(Q(content__icontains=query))
+            serializer = serializers.ArticleSerializer(articles , many=True)
+            return Response({'data':serializer.data},status=status.HTTP_200_OK)
+
+        except:
+            return Response({'error': "Get Article With Specific Content Failed!"}, status.HTTP_500_INTERNAL_SERVER_ERROR)
+
