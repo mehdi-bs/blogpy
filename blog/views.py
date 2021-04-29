@@ -80,7 +80,7 @@ class SelectArticleAPIView(APIView):
             return Response({'error': "Retriving Selected Articles Failed!"}, status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class SearchArticle(APIView):
+class SearchArticleAPIView(APIView):
 
     def get(self,request):
         try:
@@ -93,3 +93,18 @@ class SearchArticle(APIView):
         except:
             return Response({'error': "Get Article With Specific Content Failed!"}, status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+class AddArticleAPIView(APIView):
+
+    def post(self,request):
+        try:
+            serializer = serializers.AddArticleSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+
+            return Response({'data':serializer.validated_data},status=status.HTTP_200_OK)
+
+
+        except Exception as e:
+            return Response({'error': str(e)},
+                            status.HTTP_500_INTERNAL_SERVER_ERROR)
