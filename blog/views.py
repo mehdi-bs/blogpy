@@ -54,6 +54,7 @@ class AllArticleAPIView(APIView):
 
             for article in all_articles:
                 data.append({
+                    'pk':article.pk,
                     'title':article.title,
                     'cover':article.cover.url,
                     'content':article.content,
