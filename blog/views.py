@@ -54,7 +54,7 @@ class AllArticleAPIView(APIView):
 
             for article in all_articles:
                 data.append({
-                    'pk':article.pk,
+                    'id':article.id,
                     'title':article.title,
                     'cover':article.cover.url,
                     'content':article.content,
@@ -121,6 +121,19 @@ class UpdateArticleContentAPIView(APIView):
             serializer.save()
 
             return Response({'data': serializer.validated_data}, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({'error': str(e)},
+                            status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class DeleteArticleAPIView(APIView):
+
+    def post(self,request):
+        try:
+            Article.objects.get(id=request.data.get('id')).delete()
+
+            return Response({'data': {'id':request.data.get('id')}}, status=status.HTTP_200_OK)
 
         except Exception as e:
             return Response({'error': str(e)},

@@ -71,3 +71,9 @@ class UpdateArticleSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+class DeleteArticleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Article
+        fields = ('id',)
