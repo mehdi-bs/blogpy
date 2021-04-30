@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^article$',views.SelectArticleAPIView.as_view(),name='select_article'),
     url(r'^article/search$',views.SearchArticleAPIView.as_view(),name='search_article'),
     url(r'^article/add$',views.AddArticleAPIView.as_view(),name='add_article'),
+    url(r'^article/update$',views.UpdateArticleContentAPIView.as_view(),name='update_article'),
 ]

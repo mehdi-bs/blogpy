@@ -59,4 +59,15 @@ class AddArticleSerializer(serializers.ModelSerializer):
         return Article.objects.create(**validated_data)
 
 
+class UpdateArticleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Article
+        fields = ('title','content')
+
+
+    def update(self, instance, validated_data):
+        instance.content = validated_data['content']
+        instance.save()
+        return instance
 

@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import serializers
+from django.shortcuts import get_object_or_404
 
 class Index(TemplateView):
     def get(self, request, **kwargs):
@@ -104,6 +105,21 @@ class AddArticleAPIView(APIView):
 
             return Response({'data':serializer.validated_data},status=status.HTTP_200_OK)
 
+
+        except Exception as e:
+            return Response({'error': str(e)},
+                            status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class UpdateArticleContentAPIView(APIView):
+
+    def post(self,request):
+        try:
+            serializer = serializers.UpdateArticleSerializer(get_object_or_404(Article,title=request.data['title']),data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+
+            return Response({'data': serializer.validated_data}, status=status.HTTP_200_OK)
 
         except Exception as e:
             return Response({'error': str(e)},
