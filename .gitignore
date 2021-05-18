@@ -5,7 +5,7 @@
 blog/migrations/
 
 # Credentials
-docker-compose/.env
+.env
 
 # Static Files
 files/

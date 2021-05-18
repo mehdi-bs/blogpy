@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '$t$9=c9w6$0*(rob699%^x2p0(wm9(rsw)u_xi89y-j&4br)p%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST' : 'localhost',
+        'HOST' : 'blogpy_postgresql',
         'PORT': '5432',
     }
 }
@@ -125,11 +125,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'blog/static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR,'blog/static'),
+# )
 
 # Ckeditor
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
